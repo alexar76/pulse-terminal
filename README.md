@@ -1,3 +1,10 @@
+<!-- aicom-mirror-notice -->
+> **Mirror — read-only.**
+> The canonical source for `pulse-terminal` lives in the AI-Factory monorepo.
+> Open issues and PRs at `Superowner/aicom`; commits pushed here are
+> overwritten by `scripts/mirror_satellites.sh` on the next sync run.
+> See `docs/repository-canonical-policy.md` for the policy.
+
 # Pulse Terminal
 
 **Premium capital-markets dashboard** for [ACEX](https://github.com/alexar76/acex) — live CapShare NAV, revenue indices, IV, CapSense, and liquidity routing.
