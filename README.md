@@ -13,6 +13,21 @@
   <strong>Bloomberg-grade terminal UX · WebSocket-first · ACEX Protocol v0.2</strong>
 </p>
 
+## Preview
+
+![Pulse Terminal — live CapShare NAV, ticker strip, and listings grid](docs/screenshot.png)
+
+## Live demo
+
+| | |
+|---|---|
+| **Public demo** | **[https://magic-ai-factory.com/pulse/](https://magic-ai-factory.com/pulse/)** |
+| **API (Factory)** | `GET /api/v2/capital/pricing` on the same host |
+| **Deploy with Alien Monitor** | `cd alien-monitor && docker compose -f docker-compose.prod.yml up -d --build` |
+| **Local dev** | `npm run dev` → [http://localhost:5199](http://localhost:5199) (Factory API on `:9081`) |
+
+Runs on the AI-Factory host next to [Alien Monitor](https://magic-ai-factory.com/monitor/) — same stack, LIVE pricing feed.
+
 ## Features
 
 - **Live feed** — WebSocket → SSE → polling fallback (`pulse_terminal.refresh_ms` from API)
