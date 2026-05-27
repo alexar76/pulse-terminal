@@ -15,7 +15,10 @@
 
 ## Preview
 
-![Pulse Terminal — live CapShare NAV, ticker strip, and listings grid](docs/screenshot.png)
+![Pulse Terminal — UNI contour, Alien Monitor listings, CapShare NAV and data-source bar](docs/screenshot.png)
+
+> Screenshot is a static PNG in git (not an iframe). Refresh after UI changes:
+> `PULSE_SCREENSHOT_URL=https://magic-ai-factory.com/pulse/ ../../scripts/capture_pulse_terminal_screenshot.sh`
 
 ## Live demo
 
@@ -27,6 +30,17 @@
 | **Local dev** | `npm run dev` → [http://localhost:5199](http://localhost:5199) (Factory API on `:9081`) |
 
 Runs on the AI-Factory host next to [Alien Monitor](https://magic-ai-factory.com/monitor/) — same stack, LIVE pricing feed.
+
+## LIVE vs UNI — where the numbers come from
+
+| Mode | Source | Listings | Formulas |
+|------|--------|----------|----------|
+| **LIVE** | Factory `GET /api/v2/capital/pricing` | Pipeline **products** (capabilities from hub) | [ACEX v0.2](https://github.com/alexar76/acex) — same as `acex/integrations/pricing.py` |
+| **UNI** | Alien Monitor `GET …/api/monitor/state` | Ecosystem **graph nodes** (hub, factory, mesh, chains, SDKs) | Same ACEX formulas; $/call proxy from monitor metrics (invocations, capabilities, node health) |
+
+**CapShare NAV** = `$/call × success_30d × trust × 100` · **Index** = `$/call × success_30d × 1000` · **IV** = `0.15 + (1−success)×2 + (1−trust)×0.5` (capped 85%).
+
+Hot-switch **LIVE ↔ UNI** clears the table and reloads from the correct API (no mixed sparklines). Chain filter (**ANY / EVM / SOLANA**) applies in **LIVE** only.
 
 ## Features
 

@@ -1,14 +1,16 @@
+import type { EcosystemContour } from '../lib/contour';
 import type { Listing } from '../lib/types';
 import { Sparkline, cls, fmtNum, fmtUsd, shortId } from '../lib/ui';
 
 type Props = {
   listings: Listing[];
-  history: Record<string, number[]>;
+  historyFor: (listingId: string) => number[];
+  contour: EcosystemContour;
   selectedId: string | null;
   onSelect: (id: string) => void;
 };
 
-export function ListingsTable({ listings, history, selectedId, onSelect }: Props) {
+export function ListingsTable({ listings, historyFor, contour, selectedId, onSelect }: Props) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[720px] text-left text-sm">
@@ -27,7 +29,9 @@ export function ListingsTable({ listings, history, selectedId, onSelect }: Props
           {listings.length === 0 && (
             <tr>
               <td colSpan={7} className="py-8 text-center text-slate-500">
-                No listings — start factory pipeline or hub with capabilities
+                {contour === 'uni'
+                  ? 'No universe nodes — start Alien Monitor (UNI mode)'
+                  : 'No listings — start factory pipeline or hub with capabilities'}
               </td>
             </tr>
           )}
@@ -56,7 +60,7 @@ export function ListingsTable({ listings, history, selectedId, onSelect }: Props
                   <RouteBadge route={row.liquidity_route} />
                 </td>
                 <td className="py-3">
-                  <Sparkline data={history[row.listing_id] ?? []} width={100} height={28} />
+                  <Sparkline data={historyFor(row.listing_id)} width={100} height={28} />
                 </td>
               </tr>
             );

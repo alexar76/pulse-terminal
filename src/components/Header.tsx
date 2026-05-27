@@ -1,17 +1,39 @@
 import type { ConnectionMode } from '../lib/types';
+import type { EcosystemContour } from '../lib/contour';
 import { cls } from '../lib/ui';
 
 const CHAINS = ['any', 'evm', 'solana'] as const;
+const CONTOURS: { id: EcosystemContour; label: string }[] = [
+  { id: 'live', label: 'LIVE' },
+  { id: 'uni', label: 'UNI' },
+];
 
 type Props = {
   chain: (typeof CHAINS)[number];
   onChain: (c: (typeof CHAINS)[number]) => void;
+  contour: EcosystemContour;
+  onContour: (c: EcosystemContour) => void;
+  scenarioPhase?: string | null;
   mode: ConnectionMode;
   generatedAt: string | null;
   refreshMs: number;
 };
 
-export function Header({ chain, onChain, mode, generatedAt, refreshMs }: Props) {
+export function Header({
+  chain,
+  onChain,
+  contour,
+  onContour,
+  scenarioPhase,
+  mode,
+  generatedAt,
+  refreshMs,
+}: Props) {
+  const liveBadge =
+    contour === 'uni'
+      ? `UNI · ${scenarioPhase ?? 'UNIVERSE'}`
+      : `LIVE · ${mode.toUpperCase()}`;
+
   return (
     <header className="sticky top-0 z-50 border-b border-pulse-border bg-pulse-bg/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-4 py-3">
@@ -27,22 +49,56 @@ export function Header({ chain, onChain, mode, generatedAt, refreshMs }: Props) 
               Pulse Terminal
             </h1>
           </div>
-          <div className="hidden items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300 sm:flex">
-            <span className="live-dot h-2 w-2 rounded-full bg-emerald-400" />
-            LIVE · {mode.toUpperCase()}
+          <div
+            className={cls(
+              'hidden items-center gap-2 rounded-full border px-3 py-1 text-xs sm:flex',
+              contour === 'uni'
+                ? 'border-violet-400/30 bg-violet-500/10 text-violet-200'
+                : 'border-emerald-500/25 bg-emerald-500/10 text-emerald-300',
+            )}
+          >
+            <span className="live-dot h-2 w-2 rounded-full bg-current" />
+            {liveBadge}
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex rounded-lg border border-white/10 bg-black/40 p-0.5">
+            {CONTOURS.map(({ id, label }) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => onContour(id)}
+                className={cls(
+                  'rounded-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition',
+                  contour === id
+                    ? id === 'uni'
+                      ? 'bg-gradient-to-r from-violet-500/90 to-fuchsia-600/90 text-white shadow'
+                      : 'bg-gradient-to-r from-emerald-500/90 to-pulse-cyan/90 text-white shadow'
+                    : 'text-slate-400 hover:text-white',
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <div
+            className={cls(
+              'flex rounded-lg border border-white/10 bg-black/40 p-0.5',
+              contour === 'uni' && 'opacity-40',
+            )}
+            title={contour === 'uni' ? 'Chain filter applies in LIVE only' : undefined}
+          >
             {CHAINS.map((c) => (
               <button
                 key={c}
                 type="button"
+                disabled={contour === 'uni'}
                 onClick={() => onChain(c)}
                 className={cls(
                   'rounded-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition',
-                  chain === c
+                  contour === 'uni' && 'cursor-not-allowed',
+                  chain === c && contour !== 'uni'
                     ? 'bg-gradient-to-r from-pulse-cyan/90 to-violet-600/90 text-white shadow'
                     : 'text-slate-400 hover:text-white',
                 )}

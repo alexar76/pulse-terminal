@@ -1,7 +1,18 @@
+import type { EcosystemContour } from '../lib/contour';
 import type { CapIndex } from '../lib/types';
 import { fmtNum, fmtPct } from '../lib/ui';
 
-export function TickerStrip({ indices }: { indices: CapIndex[] }) {
+function tickerLabel(indexId: string): string {
+  return indexId.replace(/^(cap-revenue|uni-revenue):/, '');
+}
+
+export function TickerStrip({
+  indices,
+  contour,
+}: {
+  indices: CapIndex[];
+  contour: EcosystemContour;
+}) {
   if (!indices.length) return null;
   const items = [...indices, ...indices];
 
@@ -12,7 +23,12 @@ export function TickerStrip({ indices }: { indices: CapIndex[] }) {
           const up = idx.change_24h_pct >= 0;
           return (
             <div key={`${idx.index_id}-${i}`} className="flex items-center gap-3 font-mono text-xs">
-              <span className="text-slate-400">{idx.index_id.replace('cap-revenue:', '')}</span>
+              <span className="text-slate-400">
+                {tickerLabel(idx.index_id)}
+                {contour === 'uni' && (
+                  <span className="ml-1 text-[9px] uppercase text-violet-400/80">uni</span>
+                )}
+              </span>
               <span className="text-white">{fmtNum(idx.level, 1)}</span>
               <span className={up ? 'text-pulse-mint' : 'text-pulse-rose'}>{fmtPct(idx.change_24h_pct)}</span>
             </div>

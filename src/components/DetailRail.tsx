@@ -1,3 +1,4 @@
+import type { EcosystemContour } from '../lib/contour';
 import type { CapIndex, Listing, PricingSnapshot } from '../lib/types';
 import { Gauge, Panel, Sparkline, fmtNum, fmtUsd } from '../lib/ui';
 
@@ -5,11 +6,12 @@ type Props = {
   listing: Listing | null;
   index: CapIndex | null;
   history: number[];
+  contour: EcosystemContour;
   capsense: PricingSnapshot['capsense'] | null;
   liquidity: PricingSnapshot['liquidity'] | null;
 };
 
-export function DetailRail({ listing, index, history, capsense, liquidity }: Props) {
+export function DetailRail({ listing, index, history, contour, capsense, liquidity }: Props) {
   if (!listing) {
     return (
       <Panel title="Agent listing" subtitle="select row">
@@ -20,7 +22,14 @@ export function DetailRail({ listing, index, history, capsense, liquidity }: Pro
 
   return (
     <div className="space-y-4">
-      <Panel title={listing.product_id} subtitle="CapShare · revenue index">
+      <Panel
+        title={listing.product_id}
+        subtitle={
+          contour === 'uni'
+            ? 'UNI · NAV from monitor graph (ACEX v0.2)'
+            : 'LIVE · CapShare from product capabilities'
+        }
+      >
         <div className="mb-4 flex items-end justify-between gap-4">
           <div>
             <p className="text-[10px] uppercase tracking-wider text-slate-500">CapShare NAV</p>
