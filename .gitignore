@@ -3,3 +3,9 @@ dist/
 .env
 .env.local
 *.local
+
+# Local agent / IDE (never commit)
+.claude/
+.cursor/
+.idea/
+.vscode/
