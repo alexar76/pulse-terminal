@@ -7,6 +7,8 @@
 
 # Pulse Terminal
 
+> **Ecosystem:** [AICOM overview & live demos](https://alexar76.github.io/aicom/)
+
 **Premium capital-markets dashboard** for [ACEX](https://github.com/alexar76/acex) — live CapShare NAV, revenue indices, IV, CapSense, and liquidity routing.
 
 <p align="center">
