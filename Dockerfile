@@ -1,4 +1,5 @@
-FROM node:22-alpine AS build
+# Node security baseline: 22.23.4 (2026-10-21 security release).
+FROM node:22.23.4-alpine AS build
 WORKDIR /app
 ARG VITE_BASE_PATH=/pulse/
 ARG VITE_PULSE_DEFAULT_CONTOUR=live
