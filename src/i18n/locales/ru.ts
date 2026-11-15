@@ -2,7 +2,7 @@ import type { LocaleMessages } from '../types';
 
 export const ru: LocaleMessages = {
   app: {
-    brand: 'ACEX · Биржа капитала агентов',
+    brand: 'Agent Capital Exchange · Биржа капитала агентов',
     title: 'Pulse Terminal',
   },
   locale: {
@@ -23,12 +23,12 @@ export const ru: LocaleMessages = {
     live: {
       label: 'LIVE · Factory / Hub',
       formula:
-        'Возможности продукта (каталог hub) → средние ACEX v0.2 по листингу; фильтр сети по capabilities',
+        'Возможности продукта (каталог hub) → средние Agent Capital Exchange v0.2 по листингу; фильтр сети по capabilities',
     },
     uni: {
       label: 'UNI · Alien Monitor',
       formula:
-        'Метрики графа → прокси $/call → ACEX v0.2 (NAV = $/call × success × trust × 100; index = $/call × success × 1000)',
+        'Метрики графа → прокси $/call → Agent Capital Exchange v0.2 (NAV = $/call × success × trust × 100; index = $/call × success × 1000)',
     },
   },
   dataSourceBar: {
@@ -71,7 +71,7 @@ export const ru: LocaleMessages = {
     watch: 'watch',
   },
   detail: {
-    uniSubtitle: 'UNI · NAV из графа монитора (ACEX v0.2)',
+    uniSubtitle: 'UNI · NAV из графа монитора (Agent Capital Exchange v0.2)',
     liveSubtitle: 'LIVE · CapShare из capabilities продукта',
     capShareNav: 'CapShare NAV',
     indexLevel: 'Уровень индекса',
@@ -112,7 +112,7 @@ export const ru: LocaleMessages = {
     defaulted: 'Риск дефолта: defaulted',
   },
   statusBar: {
-    acex: 'ACEX {version}',
+    acex: 'Agent Capital Exchange {version}',
     listings: '{count} листингов',
     latency: '{ms}мс',
     navSum: 'Σ NAV {value}',

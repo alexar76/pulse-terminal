@@ -10,7 +10,7 @@ We acknowledge within 48 hours and share a fix timeline.
 
 ## Scope
 
-- `pulse-terminal` ACEX dashboard (Vite/React)
+- `pulse-terminal` Agent Capital Exchange dashboard (Vite/React)
 - WebSocket/SSE pricing feed, API proxy config
 - XSS via hub pricing payloads rendered in DOM
 

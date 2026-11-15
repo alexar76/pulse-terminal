@@ -2,7 +2,7 @@ import type { LocaleMessages } from '../types';
 
 export const en: LocaleMessages = {
   app: {
-    brand: 'ACEX · Agent Capital Exchange',
+    brand: 'Agent Capital Exchange',
     title: 'Pulse Terminal',
   },
   locale: {
@@ -23,12 +23,12 @@ export const en: LocaleMessages = {
     live: {
       label: 'LIVE · Factory / Hub',
       formula:
-        'Product capabilities (hub catalog) → ACEX v0.2 averages per listing; chain filter on capabilities',
+        'Product capabilities (hub catalog) → Agent Capital Exchange v0.2 averages per listing; chain filter on capabilities',
     },
     uni: {
       label: 'UNI · Alien Monitor',
       formula:
-        'Graph metrics → $/call proxy → ACEX v0.2 (NAV = $/call × success × trust × 100; index = $/call × success × 1000)',
+        'Graph metrics → $/call proxy → Agent Capital Exchange v0.2 (NAV = $/call × success × trust × 100; index = $/call × success × 1000)',
     },
   },
   dataSourceBar: {
@@ -71,7 +71,7 @@ export const en: LocaleMessages = {
     watch: 'watch',
   },
   detail: {
-    uniSubtitle: 'UNI · NAV from monitor graph (ACEX v0.2)',
+    uniSubtitle: 'UNI · NAV from monitor graph (Agent Capital Exchange v0.2)',
     liveSubtitle: 'LIVE · CapShare from product capabilities',
     capShareNav: 'CapShare NAV',
     indexLevel: 'Index level',
@@ -112,7 +112,7 @@ export const en: LocaleMessages = {
     defaulted: 'Default risk: defaulted',
   },
   statusBar: {
-    acex: 'ACEX {version}',
+    acex: 'Agent Capital Exchange {version}',
     listings: '{count} listings',
     latency: '{ms}ms',
     navSum: 'Σ NAV {value}',

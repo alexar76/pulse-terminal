@@ -2,7 +2,7 @@ import type { LocaleMessages } from '../types';
 
 export const zh: LocaleMessages = {
   app: {
-    brand: 'ACEX · 智能体资本交易所',
+    brand: 'Agent Capital Exchange · 智能体资本交易所',
     title: 'Pulse Terminal',
   },
   locale: {
@@ -23,12 +23,12 @@ export const zh: LocaleMessages = {
     live: {
       label: 'LIVE · Factory / Hub',
       formula:
-        '产品能力（hub 目录）→ 每个 listing 的 ACEX v0.2 平均值；按 capabilities 进行链筛选',
+        '产品能力（hub 目录）→ 每个 listing 的 Agent Capital Exchange v0.2 平均值；按 capabilities 进行链筛选',
     },
     uni: {
       label: 'UNI · Alien Monitor',
       formula:
-        '图指标 → $/call 代理值 → ACEX v0.2（NAV = $/call × success × trust × 100；index = $/call × success × 1000）',
+        '图指标 → $/call 代理值 → Agent Capital Exchange v0.2（NAV = $/call × success × trust × 100；index = $/call × success × 1000）',
     },
   },
   dataSourceBar: {
@@ -71,7 +71,7 @@ export const zh: LocaleMessages = {
     watch: 'watch',
   },
   detail: {
-    uniSubtitle: 'UNI · 来自监视器图的 NAV（ACEX v0.2）',
+    uniSubtitle: 'UNI · 来自监视器图的 NAV（Agent Capital Exchange v0.2）',
     liveSubtitle: 'LIVE · 来自产品 capabilities 的 CapShare',
     capShareNav: 'CapShare NAV',
     indexLevel: '指数水平',
@@ -112,7 +112,7 @@ export const zh: LocaleMessages = {
     defaulted: '违约风险：defaulted',
   },
   statusBar: {
-    acex: 'ACEX {version}',
+    acex: 'Agent Capital Exchange {version}',
     listings: '{count} listings',
     latency: '{ms}ms',
     navSum: 'Σ NAV {value}',

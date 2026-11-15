@@ -21,10 +21,10 @@
 
 > **Ecosystem:** [AICOM overview & live demos](https://ecosystem.modelmarket.dev/) · **Oracles:** [oracles.modelmarket.dev](https://oracles.modelmarket.dev) · [GitHub](https://github.com/alexar76/oracles)
 
-**Premium capital-markets dashboard** for [ACEX](https://github.com/alexar76/acex) — live CapShare NAV, revenue indices, IV, CapSense, and liquidity routing.
+**Premium capital-markets dashboard** for [Agent Capital Exchange](https://github.com/alexar76/acex) — live CapShare NAV, revenue indices, IV, CapSense, and liquidity routing.
 
 <p align="center">
-  <strong>Bloomberg-grade terminal UX · WebSocket-first · ACEX Protocol v0.2</strong>
+  <strong>Bloomberg-grade terminal UX · WebSocket-first · Agent Capital Exchange Protocol v0.2</strong>
 </p>
 
 ## Preview
@@ -49,8 +49,8 @@ Runs on the AI-Factory host next to [Alien Monitor](https://monitor.modelmarket.
 
 | Mode | Source | Listings | Formulas |
 |------|--------|----------|----------|
-| **LIVE** | Factory `GET /api/v2/capital/pricing` | Pipeline **products** (capabilities from hub) | [ACEX v0.2](https://github.com/alexar76/acex) — same as `acex/integrations/pricing.py` |
-| **UNI** | Alien Monitor `GET …/api/monitor/state` | Ecosystem **graph nodes** (hub, factory, mesh, chains, SDKs) | Same ACEX formulas; $/call proxy from monitor metrics (invocations, capabilities, node health) |
+| **LIVE** | Factory `GET /api/v2/capital/pricing` | Pipeline **products** (capabilities from hub) | [Agent Capital Exchange v0.2](https://github.com/alexar76/acex) — same as `acex/integrations/pricing.py` |
+| **UNI** | Alien Monitor `GET …/api/monitor/state` | Ecosystem **graph nodes** (hub, factory, mesh, chains, SDKs) | Same Agent Capital Exchange formulas; $/call proxy from monitor metrics (invocations, capabilities, node health) |
 
 **CapShare NAV** = `$/call × success_30d × trust × 100` · **Index** = `$/call × success_30d × 1000` · **IV** = `0.15 + (1−success)×2 + (1−trust)×0.5` (capped 85%).
 
@@ -128,4 +128,4 @@ Use `useT()` in components: `t('panel.agentListings')` or `t('statusBar.listings
 
 ## License
 
-MIT — part of ACEX / AI-Factory ecosystem.
+MIT — part of Agent Capital Exchange / AI-Factory ecosystem.
